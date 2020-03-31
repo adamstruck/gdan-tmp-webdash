@@ -27,9 +27,14 @@ graph-etl/outputs
 manifest.txt
 
 data/feature-sets/*
+
 data/features.sqlite
+
 data/original_pred_matrices/*
+!data/original_pred_matrices/README.md
+
 data/predictions/*
+
 data/v8-cv-matrices/*
 !data/v8-cv-matrices/README.md
 data/v8-qc/*
