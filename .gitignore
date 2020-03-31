@@ -16,11 +16,23 @@ eggs/
 \#*\#
 .desktop
 
-/venv
+data/.DS_Store
+.DS_Store
 
+/venv
 /sandbox
-/data
 /outputs
 graph-etl/outputs
 
 manifest.txt
+
+data/feature-sets/*
+data/features.sqlite
+data/original_pred_matrices/*
+data/predictions/*
+data/v8-cv-matrices/*
+!data/v8-cv-matrices/README.md
+data/v8-qc/*
+!data/v8-qc/README.md
+data/v8-feature-matrices/*
+!data/v8-feature-matrices/README.md
