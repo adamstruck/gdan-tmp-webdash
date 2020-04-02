@@ -13,6 +13,23 @@ https://www.synapse.org/#!Synapse:syn8011998/wiki/411602
 
 The app will be available at [http://localhost:3838](http://localhost:3838).
 
+## General Organization
+
+```
+data/
+├── download_data.sh       <- download tarball
+├── load_sqlite.R          <- prepare feature database
+├── features.sqlite        <- output database
+|
+├── v8-cv-matrices          <- raw tarball contents
+├── v8-feature-matrices     <- raw tarball contents
+├── v8-qc                   <- raw tarball contents
+|
+├── original_pred_matrices  <- group results
+├── feature-sets            <- unified feature set of all group results
+├── predictions             <- group results
+```
+
 ## (Optional) Download Data From Synapse
 
 If you want to be able to examine feature values in the app do the following:
