@@ -29,7 +29,6 @@ manifest.txt
 data/feature-sets/*
 
 data/features.sqlite
-
 data/original_pred_matrices/*
 !data/original_pred_matrices/README.md
 
