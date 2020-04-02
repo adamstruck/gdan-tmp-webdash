@@ -40,3 +40,5 @@ data/v8-qc/*
 !data/v8-qc/README.md
 data/v8-feature-matrices/*
 !data/v8-feature-matrices/README.md
+
+/reformat/*.tsv
