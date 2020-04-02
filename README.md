@@ -26,8 +26,8 @@ data/
 ├── v8-qc                   <- raw tarball contents
 |
 ├── original_pred_matrices  <- group results
-├── feature-sets            <- unified feature set of all group results
-├── predictions             <- group results
+├── feature-sets            <- MAIN: unified feature set of all group results
+├── predictions             <- MAIN: group results
 ```
 
 ## (Optional) Download Data From Synapse
