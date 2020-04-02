@@ -18,5 +18,5 @@ ls -1  | grep .*features_sets*
     sed '1d' SARC_features_sets.tsv; \
     sed '1d' TGCT_features_sets.tsv; \
     sed '1d' THYM_features_sets.tsv; \
-    sed '1d' UVM_features_sets.tsv; \
-    } > ../../../../reformat/concat--2020-03-10_extracted--features_sets.tsv
+    sed '1d' UVM_features_sets.tsv; } \
+    > ../../../../reformat/concat--2020-03-10_extracted--features_sets.tsv
