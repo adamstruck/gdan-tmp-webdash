@@ -1,23 +1,36 @@
 ## Web Dashboard For Viewing GDAN TMP Machine Learning Results
 https://www.synapse.org/#!Synapse:syn8011998/wiki/411602
 
-## Download Data From Synapse
+### Start the Shiny Application
 
-Project Home for CCG_TMP_AWG - https://www.synapse.org/#!Synapse:syn8011998/wiki/411602
+- Add prediction file(s) to: `data/predictions`
+- Add feature set file(s) to: `data/feature-sets`
+- Run the app
 
-- Install the synapse python client: `pip install synapseclient`
-- Download the V8 tarball: 
+  ```
+  docker-compose up
+  ```
+
+The app will be available at [http://localhost:3838](http://localhost:3838).
+
+## (Optional) Download Data From Synapse
+
+If you want to be able to examine feature values in the app do the following:
+
+- Install the synapse python client:
+  ```
+  pip install synapseclient boto3
+  ```
+- Download the V8 tarball:
 
   ```
   cd data
   bash download_data.sh
   ```
-- Add prediction file(s) to: `data/predictions`
-- Add feature set file(s) to: `data/feature-sets`
-- Prepare the feature database: 
+- Prepare the feature database:
 
   ```
-  Rscript load_sqlite.R
+  Rscript load_sqlite.R ./v8-feature-matrices/ ./features.sqlite
   ```
 
 *Expected Data Directory Layout*
@@ -26,19 +39,9 @@ Project Home for CCG_TMP_AWG - https://www.synapse.org/#!Synapse:syn8011998/wiki
 data/
 ├── features.sqlite
 ├── feature-sets
-│   ├── featuresets_v8.tsv
-│   └── ...
+│   ├── featuresets_v8.tsv
+│   └── ...
 └── predictions
     ├── ACC_randomforest_200127.tsv
-    └── ,,,
+    └── ...
 ```
-
-### Start the Shiny Application
-
-```
-docker-compose up -d
-```
-
-The app will be available at [http://localhost:3838](http://localhost:3838).
-
-
