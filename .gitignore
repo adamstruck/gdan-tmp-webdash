@@ -44,3 +44,5 @@ data/v8-feature-matrices/*
 /reformat/*.tsv
 /reformat/processed/*.tsv
 /reformat/final_reformatted_files/*.tsv
+
+/data/TEMP*
