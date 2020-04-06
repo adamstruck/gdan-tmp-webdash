@@ -58,3 +58,7 @@ python3 reformat-gnosis-preds.py \
 python3 reformat-gnosis-preds.py \
     -in /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted/UVM_single_sample_predictions.tsv \
     -out /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/final_reformatted_files/reformat-UVM_single_sample_predictions.tsv
+
+
+# temp fix of reformat - will incorporate into previous code to clean up later
+python3 reformat-gnosis-preds-STEP2.py
