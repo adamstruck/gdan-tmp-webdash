@@ -1,18 +1,6 @@
 ## Web Dashboard For Viewing GDAN TMP Machine Learning Results
 https://www.synapse.org/#!Synapse:syn8011998/wiki/411602
 
-### Start the Shiny Application
-
-- Add prediction file(s) to: `data/predictions`
-- Add feature set file(s) to: `data/feature-sets`
-- Run the app
-
-  ```
-  docker-compose up
-  ```
-
-The app will be available at [http://localhost:3838](http://localhost:3838).
-
 ## General Organization
 
 ```
@@ -30,6 +18,20 @@ data/
 ├── predictions             <- MAIN: group results
 ```
 
+## Quick Start: Start the Shiny Application
+
+- Create dirs with prefix `v8-` and fill contents (see General Organization)
+- Prepare feature database `Rscript load_sqlite.R ./v8-feature-matrices/ ./features.sqlite`. Pulls only files ending in .tsv in v8-feature-matrices/
+- Add prediction file(s) to: `data/predictions`. These are the classifier results.
+- Add feature set file(s) to: `data/feature-sets`. These are the features the model was shown when producing classifier results
+- Run the app
+
+  ```
+  docker-compose up
+  ```
+
+The app will be available at [http://localhost:3838](http://localhost:3838).
+
 ## (Optional) Download Data From Synapse
 
 If you want to be able to examine feature values in the app do the following:
@@ -38,12 +40,13 @@ If you want to be able to examine feature values in the app do the following:
   ```
   pip install synapseclient boto3
   ```
-- Download the V8 tarball:
+- Download the V8 tarball and place contents in appropriate `v8-` prefix dirs :
 
   ```
   cd data
   bash download_data.sh
   ```
+
 - Prepare the feature database:
 
   ```
