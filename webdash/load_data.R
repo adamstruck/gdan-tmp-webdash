@@ -3,9 +3,13 @@ suppressMessages({
   library(magrittr)
 })
 
+## options(shiny.trace = TRUE) # JAL
+
 message("loading prediction files...")
 output_files <- list.files("/mnt/data/predictions", full.names = T)
 predictions <- foreach(f = output_files, .combine = dplyr::bind_rows) %do% {
+  message('Currently working on file: ')
+  print(f)
   data.table::fread(f) %>%
     dplyr::as_tibble() %>%
     tidyr::gather(-Sample_ID, -Repeat, -Fold, -Test, -Label, key = "prediction_id", value = "predicted_value") %>%
@@ -40,4 +44,4 @@ feature_con <- DBI::dbConnect(RSQLite::SQLite(), "/mnt/data/features.sqlite")
 message("getting cancer list...")
 cancers <- predictions %>% dplyr::pull(cancer_id) %>% unique()
 
-message("done")
+message("done loading data")
