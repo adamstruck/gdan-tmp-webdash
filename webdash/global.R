@@ -24,6 +24,7 @@ source("load_data.R")
 # feature_con
 # cancers
 #
+message('...generating model summary')
 suppressMessages({
   model_summary <- dplyr::left_join(
     dplyr::left_join(
@@ -54,6 +55,7 @@ suppressMessages({
     dplyr::ungroup()
 })
 
+message('...populating selected models')
 selected_models <- which(paste(model_summary$Project, model_summary$Model_Rank, sep = "|") %in% paste(cancers, 1,  sep = "|"))
 
 message("selected models: ", paste(selected_models, collapse = ", "))
