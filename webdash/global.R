@@ -27,17 +27,25 @@ source("load_data.R")
 message('...generating model summary')
 suppressMessages({
   model_summary <- dplyr::left_join(
+    # Join. so cols == c(cancer_id,model_id,featureset_id,testing,training,date,prediction_id)
     dplyr::left_join(
       predictions %>%
+        # create groups == which cols will be kept after next step
         dplyr::group_by(cancer_id, model_id, featureset_id, type) %>%
+        # condense down so cols only are the4 sel above + 'correct' and 'total'
         dplyr::summarize(correct = table(as.numeric(predicted_value) == as.numeric(actual_value))["TRUE"],
                          total = dplyr::n()) %>%
         dplyr::ungroup() %>%
+        # create tpr col and fill for each row. KEY is that now test and train are represented by sep rows (in type col)
         dplyr::mutate(tpr = round(correct / total, digits = 3)) %>%
+        # keep only the specified cols
         dplyr::select(cancer_id, model_id, featureset_id, type, tpr) %>%
+        # now reorganize info so that only have cols c('cancer_id', "model_id", 'featureset_id', 'testing', 'training')
         tidyr::spread(type, tpr),
       predictions %>%
+        # keep only specified rows
         dplyr::select(cancer_id, model_id, featureset_id, date, prediction_id) %>%
+        # keep only rows that are not repeats of other rows
         dplyr::distinct()
     ) %>%
       dplyr::rename(Project = cancer_id, Model = model_id, Features = featureset_id,
