@@ -46,3 +46,9 @@ data/v8-feature-matrices/*
 /reformat/final_reformatted_files/*.tsv
 
 /data/TEMP*
+# house temp files from adams random forest until app can be scaled up
+data/ADAM-feature-sets/*
+data/ADAM-predictions/*
+# house temp files from gnosis until app can be scaled up
+data/GNOSIS-feature-sets/*
+data/GNOSIS-predictions/*
