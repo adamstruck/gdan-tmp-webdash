@@ -82,5 +82,5 @@ bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices
 
 ```
 cd reformat
-bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_preds /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
+bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
 ```
