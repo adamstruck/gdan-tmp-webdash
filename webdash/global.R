@@ -26,29 +26,20 @@ source("load_data.R")
 # cancers
 #
 message('...generating model summary\n\t', Sys.time())
-# message('...ADAM RANDOM FOREST - reading in tmp--obj3.tsv as obj3\n\t', Sys.time())
-# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--obj3.tsv') %>%
-#     dplyr::as_tibble() %>%
-#     # by default read in not as type date. so force it here
-#     dplyr::mutate(Date = as.Date(Date))
-message('...GNOSIS - reading in obj3.tsv as obj3\n\t', Sys.time())
-# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--gnosis_obj3.tsv') %>%
-# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv') %>%
-# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--fixattempt2.4--gnosis_obj3.tsv') %>%
+message('...GNOSIS - reading /data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv\n\t', Sys.time())
 obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv') %>%
     dplyr::as_tibble() %>%
-    # by default read in not as type date. so force it here
     dplyr::mutate(Date = as.Date(Date))
 
-# message('...creating obj4\n\t', Sys.time())
-# obj4 <- featureSets %>%
-#     dplyr::group_by(featureset_id, cancer_id) %>%
-#     dplyr::summarize(N_Features = dplyr::n()) %>%
-#     dplyr::ungroup() %>%
-#     dplyr::rename(Features = featureset_id, Project = cancer_id)
-
-# message('### obj4 cols are ###')
-# print(obj4)
+##
+## message('...creating obj4\n\t', Sys.time())
+## obj4 <- featureSets %>%
+##     dplyr::group_by(featureset_id, cancer_id) %>%
+##     dplyr::summarize(N_Features = dplyr::n()) %>%
+##     dplyr::ungroup() %>%
+##     dplyr::rename(Features = featureset_id, Project = cancer_id)
+## message('### obj4 cols are ###')
+## print(obj4)
 ## message('### obj4 cols are 22 ###')
 ## print(obj4$N_Features)
 
