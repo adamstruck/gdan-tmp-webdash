@@ -37,8 +37,6 @@ featureset_files <- list.files("/mnt/data/feature-sets", full.names = T)
 featureSets <- foreach(f = featureset_files, .combine = dplyr::bind_rows) %do% {
     data.table::fread(f) %>%
         dplyr::as_tibble() %>%
-            # THIS LINE IS GNOSIS SPECIFIC - new line
-            dplyr::mutate(Features = as.character(Features)) %>%
             dplyr::mutate(Features = purrr::map(Features, jsonlite::fromJSON),
                           TCGA_Projects = purrr::map(TCGA_Projects, jsonlite::fromJSON)) %>%
             tidyr::unnest(TCGA_Projects) %>%

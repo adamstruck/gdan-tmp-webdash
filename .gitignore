@@ -52,8 +52,9 @@ data/ADAM-predictions/*
 # house temp files from gnosis until app can be scaled up
 data/GNOSIS-feature-sets/*
 data/GNOSIS-predictions/*
+data/GNOSIS*
 
 
 # files to reduce memory load (1=gnosis, 2=adam rf)
-data/tmpdir/tmp--gnosis_obj3.tsv
-data/tmpdir/tmp--obj3.tsv
+data/tmpdir/*
+!data/tmpdir/README.md
