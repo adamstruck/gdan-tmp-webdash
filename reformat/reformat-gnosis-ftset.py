@@ -1,22 +1,26 @@
 #!/bin/bash/env python3
 
 ## Purpose = reformat the feature files of gnosis.
-## this will replace 01_unify-ftmat-crete.sh and 02_reformat-feature-set.py
 
 import os
 import glob
-##############
-ft_input = '/Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted/'
-ft_output = '/Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/processed'
-##############
 
+import argparse
+
+def get_arguments():
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument("-in", "--input", help ="input dir", required=True, type=str)
+    parser.add_argument("-out", "--output", help ="output dir", required=True, type=str)
+    return parser.parse_args()
+
+args = get_arguments()
+ft_input = args.input
+ft_output = args.output
 
 
 # Read in all feature files from input dir
-os.chdir(ft_input)
-files = glob.glob('*_features_sets.tsv')
-
-
+# os.chdir(ft_input)
+files = glob.glob(os.path.join(ft_input, "*_features_sets.tsv"))
 
 # # Iterate through one file
 # with open(ft_input, 'r') as fh, open(ft_output, 'w') as out:
@@ -28,12 +32,12 @@ files = glob.glob('*_features_sets.tsv')
 #             irow+=1
 #         else:
 #             line = line.strip().split('\t')
-#             model = line[0]
+#             ftmethod = line[0]
 #             tumor = line[1]
 #             ftset = line[2]
 
-#             # No reformat to model
-#             out.write(model + '\t')
+#             # No reformat to ftmethod
+#             out.write(ftmethod + '\t')
 
 #             # reformat tumor
 #             tumor = "[" + "\"" + tumor + "\"" + "]"
@@ -42,23 +46,20 @@ files = glob.glob('*_features_sets.tsv')
 #             # no reformat ftset
 #             out.write(ftset + "\n")
 
-# fh.close()
-# out.close()
 
-
-
-
-os.chdir(ft_output)
-
+# os.chdir(ft_output)
 # Iterate through all files in a dir
 for f in files:
+    #sep path and file
+    path ="/".join(f.strip().split('/')[0:9])
+    file = f.strip().split('/')[-1]
     # set up file names
-    a = f.strip().split("_")[0] #a== ACC/etc
-    outputname = a + "_gnosis_corrected.tsv"
+    a = file.strip().split("_")[0] #a== ACC/etc
 
+    outputname = ft_output + "/" +a + "_gnosis_corrected.tsv"
 
     # Reformat and save tsv outputs
-    with open(ft_input+f, 'r') as fh, open(outputname, 'w') as out:
+    with open(f, 'r') as fh, open(outputname, 'w') as out:
         irow = 0
         for line in fh:
             # Write col headers to out
@@ -67,12 +68,13 @@ for f in files:
                 irow+=1
             else:
                 line = line.strip().split('\t')
-                model = line[0]
+                ftmethod = line[0]
                 tumor = line[1]
                 ftset = line[2]
 
-                # No reformat to model
-                out.write(model + '\t')
+                # No reformat to ftmethod
+                ftmethod = 'model' + ftmethod
+                out.write(ftmethod + '\t')
 
                 # reformat tumor
                 tumor = "[" + "\"" + tumor + "\"" + "]"
@@ -81,6 +83,4 @@ for f in files:
                 # no reformat ftset
                 out.write(ftset + "\n")
 
-    fh.close()
-    out.close()
     print("Created file: ", outputname)

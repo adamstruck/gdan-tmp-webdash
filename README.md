@@ -29,6 +29,11 @@ data/
 - Prepare feature database `Rscript load_sqlite.R ./v8-feature-matrices/ ./features.sqlite`. Pulls only files ending in .tsv in v8-feature-matrices/
 - Add prediction file(s) to: `data/predictions`. These are the classifier results.
 - Add feature set file(s) to: `data/feature-sets`. These are the features the model was shown when producing classifier results
+- Create obj3 of prediction and feature-set dirs. Reduces memory usage when running app
+```
+Rscript gen-obj3.R <path/to/predictions_dir> <path/to/featureset_dir> <path>/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv
+```
+
 - Run the app
 
   ```
@@ -68,4 +73,14 @@ If you want to be able to examine feature values in the app do the following:
 
 1. Fix feature set matrices format
 
+```
+cd reformat
+bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted ~/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_dir ~/Ellrott_Lab/gdan-tmp-webdash/data/feature-sets/fixattempt2--all-features_sets_gnosis_corrected.tsv
+```
+
 2. Fix prediction matrices format
+
+```
+cd reformat
+bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_preds /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
+```

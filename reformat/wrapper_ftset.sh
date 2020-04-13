@@ -1,10 +1,18 @@
 #!/bin/bash
 
+raw_dir=${1}
+temp_dir=${2}
+output_file=${3}
+
+mkdir temp_dir
+
 # 1. reformat each individual tumor file
-python reformat-gnosis-ftset.py
+python reformat-gnosis-ftset.py \
+    -in ${raw_dir} \
+    -out ${temp_dir}
 
 # 2. concat all tumor files into one
-cd processed
+cd temp_dir
 
 echo 'will concat these files:'
 ls -1  | grep .*gnosis_corrected.tsv
@@ -24,4 +32,9 @@ ls -1  | grep .*gnosis_corrected.tsv
     sed '1d' TGCT_gnosis_corrected.tsv; \
     sed '1d' THYM_gnosis_corrected.tsv; \
     sed '1d' UVM_gnosis_corrected.tsv; } \
-    > /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/final_reformatted_files/all-features_sets_gnosis_corrected.tsv
+    > ${output_file}
+
+echo 'Created file: '${output_file}
+echo 'Cleaning up workspace'
+cd ..
+rm -r temp_dir

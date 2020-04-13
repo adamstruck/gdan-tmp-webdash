@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
 
-###################
-# pred_file = '~/gdan_extra/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted/ACC_single_sample_predictions.tsv'
-# output_name = '~/gdan_extra/reformat/final_reformatted_files/reformat-ACC_single_sample_predictions.tsv'
-###################
-
-
 #######
 # Imports and functions
 #######
