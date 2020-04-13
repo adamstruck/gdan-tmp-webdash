@@ -73,4 +73,14 @@ If you want to be able to examine feature values in the app do the following:
 
 1. Fix feature set matrices format
 
+```
+cd reformat
+bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted ~/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_dir ~/Ellrott_Lab/gdan-tmp-webdash/data/feature-sets/fixattempt2--all-features_sets_gnosis_corrected.tsv
+```
+
 2. Fix prediction matrices format
+
+```
+cd reformat
+bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_preds /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
+```
