@@ -14,8 +14,13 @@ data/
 ├── v8-qc                   <- raw tarball contents
 |
 ├── original_pred_matrices  <- group results
+├── tmpdir                  <- obj3 tsv
 ├── feature-sets            <- MAIN: unified feature set of all group results
-├── predictions             <- MAIN: group results
+|   ├── ...
+|   └── ...
+└── predictions             <- MAIN: group results
+    ├── ...
+    └── ...
 ```
 
 ## Quick Start: Start the Shiny Application
@@ -53,24 +58,14 @@ If you want to be able to examine feature values in the app do the following:
   Rscript load_sqlite.R ./v8-feature-matrices/ ./features.sqlite
   ```
 
-*Expected Data Directory Layout*
+- Run the app
 
-```
-data/
-├── features.sqlite
-├── feature-sets
-│   ├── featuresets_v8.tsv
-│   └── ...
-└── predictions
-    ├── ACC_randomforest_200127.tsv
-    └── ...
-```
-
+  ```
+  docker-compose up
+  ```
 
 ## Reformat Gnosis files as of 4/5/20
 
-1. Fix feature set matrices format `wrapper_ftset.sh`
+1. Fix feature set matrices format
 
-2. Fix prediction matrices format `wrapper_preds.sh`
-
-3. Move these into `../data/feature-sets/` and `../data/predictions`
+2. Fix prediction matrices format 
