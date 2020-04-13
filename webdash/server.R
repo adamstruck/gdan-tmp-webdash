@@ -12,7 +12,10 @@ function(input, output, session) {
     message("HTTP_REMOTE_USER: ", session$request$HTTP_REMOTE_USER)
     message("HTTP_REMOTE_ROLES: ", session$request$HTTP_REMOTE_ROLES)
     message("HTTP_USER_AGENT: ", session$request$HTTP_USER_AGENT)
-
+    message('### input - JAL ###')
+    print(input)
+    message('### input$cancersel ###')
+    reactive( print(input$cancer_selection) )
     ##--------------------
     ## Sidebar filters
     ##--------------------
@@ -22,7 +25,7 @@ function(input, output, session) {
         if (input$cancer_selection == "") {
             return()
         }
-        
+
         features <- feature_con %>%
             dplyr::tbl(sprintf("%s_features", input$cancer_selection)) %>%
             dplyr::select(feature_id) %>%
@@ -308,7 +311,15 @@ function(input, output, session) {
         } else {
             hm <- hm %>% add_row_title("Models", font = list(size = 20))
         }
-        hm %>% modify_layout(list(height = 400 + 15*dim(pred_mat)[1],
+
+
+        #constraints on heatmap size --
+        # 1. auto size -- not advised
+        # hm %>% modify_layout(list(height = 400 + 15*dim(pred_mat)[1],
+        #                           autosize = TRUE))
+        # 2. set size
+        m <- list(l=100,r=100,b=200,t=200,pad=4)
+        hm %>% modify_layout(list(height = 2000, width=1100,margin=m,
                                   autosize = TRUE))
     })
 
