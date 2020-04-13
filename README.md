@@ -30,7 +30,7 @@ data/
   docker-compose up
   ```
 
-The app will be available at [http://localhost:3838](http://localhost:3838).
+The app will be available at [http://localhost:3838](http://localhost:3838)
 
 ## (Optional) Download Data From Synapse
 
