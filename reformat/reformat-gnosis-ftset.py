@@ -19,8 +19,8 @@ ft_output = args.output
 
 
 # Read in all feature files from input dir
-os.chdir(ft_input)
-files = glob.glob('*_features_sets.tsv')
+# os.chdir(ft_input)
+files = glob.glob(os.path.join(ft_input, "*_features_sets.tsv"))
 
 # # Iterate through one file
 # with open(ft_input, 'r') as fh, open(ft_output, 'w') as out:
@@ -47,16 +47,19 @@ files = glob.glob('*_features_sets.tsv')
 #             out.write(ftset + "\n")
 
 
-os.chdir(ft_output)
+# os.chdir(ft_output)
 # Iterate through all files in a dir
 for f in files:
+    #sep path and file
+    path ="/".join(f.strip().split('/')[0:9])
+    file = f.strip().split('/')[-1]
     # set up file names
-    a = f.strip().split("_")[0] #a== ACC/etc
-    outputname = a + "_gnosis_corrected.tsv"
+    a = file.strip().split("_")[0] #a== ACC/etc
 
+    outputname = ft_output + "/" +a + "_gnosis_corrected.tsv"
 
     # Reformat and save tsv outputs
-    with open(ft_input+"/"+f, 'r') as fh, open(outputname, 'w') as out:
+    with open(f, 'r') as fh, open(outputname, 'w') as out:
         irow = 0
         for line in fh:
             # Write col headers to out

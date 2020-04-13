@@ -2,7 +2,7 @@
 
 raw_dir=${1}
 temp_dir=${2}
-output_dir=${3}
+output_file=${3}
 
 mkdir temp_dir
 
@@ -10,9 +10,6 @@ mkdir temp_dir
 python reformat-gnosis-ftset.py \
     -in ${raw_dir} \
     -out ${temp_dir}
-# python reformat-gnosis-ftset.py \
-#     -in ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted/ \
-#     -out ~/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_dir
 
 # 2. concat all tumor files into one
 cd temp_dir
@@ -35,7 +32,9 @@ ls -1  | grep .*gnosis_corrected.tsv
     sed '1d' TGCT_gnosis_corrected.tsv; \
     sed '1d' THYM_gnosis_corrected.tsv; \
     sed '1d' UVM_gnosis_corrected.tsv; } \
-    > ${output_dir}
+    > ${output_file}
 
+echo 'Created file: '${output_file}
+echo 'Cleaning up workspace'
 cd ..
 rm -r temp_dir
