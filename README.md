@@ -29,7 +29,11 @@ data/
 - Prepare feature database `Rscript load_sqlite.R ./v8-feature-matrices/ ./features.sqlite`. Pulls only files ending in .tsv in v8-feature-matrices/
 - Add prediction file(s) to: `data/predictions`. These are the classifier results.
 - Add feature set file(s) to: `data/feature-sets`. These are the features the model was shown when producing classifier results
-- Create obj3 of prediction and feature-set dirs. Reduces memory usage when running app `Rscript gen-obj3.R <path/to/predictions_dir> <path/to/featureset_dir> <path>/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv`
+- Create obj3 of prediction and feature-set dirs. Reduces memory usage when running app
+```
+Rscript gen-obj3.R <path/to/predictions_dir> <path/to/featureset_dir> <path>/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv
+```
+
 - Run the app
 
   ```
