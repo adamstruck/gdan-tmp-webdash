@@ -64,8 +64,8 @@ If you want to be able to examine feature values in the app do the following:
   docker-compose up
   ```
 
-## Reformat Gnosis files as of 4/5/20
+## Reformat Gnosis_results/2020-03-10_extracted/
 
 1. Fix feature set matrices format
 
-2. Fix prediction matrices format 
+2. Fix prediction matrices format
