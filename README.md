@@ -121,7 +121,7 @@ Run:
 
 ```
 cd reformat
-./wrapper_ftset.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted ./TEMP_DIR ../data/library_reformating/features_reformatted_gnosis20200408.tsv
+./wrapper_ftset-gnosis.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted ./TEMP_DIR ../data/library_reformating/features_reformatted_gnosis20200408.tsv
 ```
 outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
 
@@ -130,5 +130,5 @@ outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
 
 ```
 cd reformat
-./wrapper_preds.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted TEMP_DIR ../data/library_reformating
+./wrapper_preds-gnosis.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted TEMP_DIR ../data/library_reformating
 ```
