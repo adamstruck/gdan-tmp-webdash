@@ -137,7 +137,7 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
-- [ ] Reformat GEXP_NN feature set file
+- [x] Reformat GEXP_NN feature set file
 - [ ] Reformat GEXP_NN prediction matrices
 
 
@@ -146,7 +146,12 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 Raw file contains 2 different feature sets (nn_jg_2020-03-20_bootstrapfeatures,nn_jg_2020-03-20_top1kfreq)
 
 TODO:
-- [ ] Remove # commented out lines at head of file (specific to viewer input)
-- [ ] Remove Feature_importances col (specific to viewer input)
-- [ ] col TCGA_Projects -- ' -> " and rm spaces between list items
-- [ ] col Features -- "['ft', 'ft', ...]" -> ["ft","ft",..]
+- [x] Remove # commented out lines at head of file (specific to viewer input)
+- [x] Remove Feature_importances col (specific to viewer input)
+- [x] col TCGA_Projects -- ' -> " and rm spaces between list items
+- [x] col Features -- "['ft', 'ft', ...]" -> ["ft","ft",..]
+
+```
+cd reformat
+bash wrapper_ftset-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/Features-20200320_allCOHORTS_20200203Tarball_JasleenGrewal.txt ../data/library_reformating/features_reformatted_gexpnn20200320allCOHORTS.tsv
+```
