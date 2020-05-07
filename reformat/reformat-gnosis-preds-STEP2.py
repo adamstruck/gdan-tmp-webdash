@@ -28,7 +28,7 @@ os.chdir(ft_output)
 for f in files:
     # set up file names
     tumor = f.strip().split("-")[1].split('_')[0] #a== ACC/etc
-    outputname = "fixattempt2--reformat-" + tumor + "_single_sample_predictions.tsv"
+    outputname = "predictions_reformatted_gnosis20200408-" + tumor + ".tsv"
 
     # Iterate through one file
     with open(ft_input+"/"+f, 'r') as fh, open(outputname, 'w') as out:

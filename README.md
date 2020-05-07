@@ -13,14 +13,55 @@ data/
 ├── v8-feature-matrices     <- raw tarball contents
 ├── v8-qc                   <- raw tarball contents
 |
-├── original_pred_matrices  <- group results
+├── original_pred_matrices  <- group results (previous group results raw, will be rm later)
 ├── tmpdir                  <- obj3 tsv
 ├── feature-sets            <- MAIN: unified feature set of all group results
 |   ├── ...
 |   └── ...
 └── predictions             <- MAIN: group results
-    ├── ...
-    └── ...
+|   ├── ...
+|   └── ...
+|   
+|
+├── GROUP_RESULTS_RAW_FINAL
+|   ├── AKLIMATE
+|       └── aklimate_predictions_and_features_20200430.tar.gz
+|   ├── CloudForest
+|       └──
+|   ├── GEXP_NN
+|       ├── Features-20200320_allCOHORTS_20200203Tarball_JasleenGrewal.txt
+|       └── 2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal.gz
+|   ├── Gnosis_results
+|       ├── 2020-04-08.zip
+|       └── 2020-04-08_extracted
+|           ├── ${tumor}_features_sets.tsv
+|           └── ${tumor}_single_sample_predictions.tsv
+|   └── OHSU_results
+|       ├── fbed_rfe_feats.csv       <- feature set
+|       └── reprocess.tgz            <- prediction files
+|           ├── fbed_ada
+|           ├── fbed_bnb
+|           ├── fbed_dt
+|           ├── fbed_et
+|           ├── fbed_gnb
+|           ├── fbed_gp
+|           ├── fbed_knn
+|           ├── fbed_logreg
+|           ├── fbed_pa
+|           ├── fbed_rf
+|           ├── fbed_sgd
+|           ├── fbed_svm
+|           ├── rfe_ada
+|           ├── rfe_bnb
+|           ├── rfe_dt
+|           ├── rfe_et
+|           ├── rfe_gnb
+|           ├── rfe_knn
+|           ├── rfe_logreg
+|           ├── rfe_pa
+|           ├── rfe_rf
+|           ├── rfe_sgd
+|           ├── rfe_svm
 ```
 
 ## Quick Start: Start the Shiny Application
@@ -69,18 +110,27 @@ If you want to be able to examine feature values in the app do the following:
   docker-compose up
   ```
 
-## Reformat Gnosis_results/2020-03-10_extracted/
+# Reformat Gnosis files (20200408)
 
-1. Fix feature set matrices format
+- [x] Reformat Gnosis feature set files
+- [x] Reformat Gnosis prediction matrices
 
-```
-cd reformat
-bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted ~/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_dir ~/Ellrott_Lab/gdan-tmp-webdash/data/feature-sets/fixattempt2--all-features_sets_gnosis_corrected.tsv
-```
+1. Reformat feature set matrices
 
-2. Fix prediction matrices format
+Run:
 
 ```
 cd reformat
-bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
+./wrapper_ftset-gnosis.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted ./TEMP_DIR ../data/library_reformating/features_reformatted_gnosis20200408.tsv
 ```
+outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
+
+
+ 2. Reformat prediction matrices
+
+```
+cd reformat
+./wrapper_preds-gnosis.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted TEMP_DIR ../data/library_reformating
+```
+
+outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor}.tsv`
