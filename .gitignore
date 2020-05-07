@@ -58,3 +58,9 @@ data/GNOSIS*
 # files to reduce memory load (1=gnosis, 2=adam rf)
 data/tmpdir/*
 !data/tmpdir/README.md
+
+# final raw data of group
+data/GROUP_RESULTS_RAW_FINAL
+
+# library of reformatted group input files
+data/library_reformating/

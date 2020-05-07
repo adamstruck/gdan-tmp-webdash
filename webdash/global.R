@@ -25,11 +25,18 @@ source("load_data.R")
 # feature_con
 # cancers
 #
+
+# message('...generating model summary\n\t', Sys.time())
+# message('...GNOSIS - reading /data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv\n\t', Sys.time())
+# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv') %>%
+#     dplyr::as_tibble() %>%
+#     dplyr::mutate(Date = as.Date(Date))
 message('...generating model summary\n\t', Sys.time())
-message('...GNOSIS - reading /data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv\n\t', Sys.time())
-obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv') %>%
+message('...GNOSIS - reading /data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv\n\t', Sys.time())
+obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv') %>%
     dplyr::as_tibble() %>%
     dplyr::mutate(Date = as.Date(Date))
+
 
 ##
 ## message('...creating obj4\n\t', Sys.time())

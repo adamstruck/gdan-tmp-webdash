@@ -47,10 +47,12 @@ function(input, output, session) {
 
 
     observe({
-        updateSelectizeInput(session = session,
-                             inputId = 'sample_selection',
-                             choices =  unique(cancer_preds()$sample_id),
-                             server = TRUE)
+        if (dim(cancer_preds())[1] > 0) {
+            updateSelectizeInput(session = session,
+                                 inputId = 'sample_selection',
+                                 choices =  unique(cancer_preds()$sample_id),
+                                 server = TRUE)
+        }
     })
 
     ##----------------------
@@ -86,7 +88,7 @@ function(input, output, session) {
     selection = list(selected = selected_models, target = "row"),
     options = list(
         scrollX = TRUE,
-        columnDefs = list(list(visible=FALSE, targets=c(5)))
+        columnDefs = list(list(visible = FALSE, targets = c(5)))
     ))
 
     output$selectedModelsBox <- renderUI({
@@ -243,6 +245,9 @@ function(input, output, session) {
     ##----------------------
 
     output$predHeatmap <- renderIheatmap({
+        if (dim(cancer_preds())[1] == 0) {
+            return()
+        }
         avg_pred <- cancer_preds() %>%
             dplyr::filter(type == input$set_selection) %>%
             dplyr::group_by(prediction_id, sample_id) %>%
