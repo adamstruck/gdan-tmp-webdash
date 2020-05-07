@@ -131,7 +131,7 @@ bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_p
 Reformat Gnosis files - feature sets
 
 - [x] Reformat Gnosis feature set files
-- [] Reformat Gnosis prediction matrices
+- [ ] Reformat Gnosis prediction matrices
 
 1. Reformat feature set matrices
 
@@ -147,5 +147,5 @@ outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
  2. Reformat prediction matrices
 
  **WIP**
- 
+
 + Compare this with last run fixattempt2--reformat-${tumor}_single_sample_predictions.tsv
