@@ -137,5 +137,16 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
-- [ ] Reformat GEXP_NN feature set files
+- [ ] Reformat GEXP_NN feature set file
 - [ ] Reformat GEXP_NN prediction matrices
+
+
+1. Reformat GEXP_NN feature set file
+
+Raw file contains 2 different feature sets (nn_jg_2020-03-20_bootstrapfeatures,nn_jg_2020-03-20_top1kfreq)
+
+TODO:
+- [ ] Remove # commented out lines at head of file (specific to viewer input)
+- [ ] Remove Feature_importances col (specific to viewer input)
+- [ ] col TCGA_Projects -- ' -> " and rm spaces between list items
+- [ ] col Features -- "['ft', 'ft', ...]" -> ["ft","ft",..]
