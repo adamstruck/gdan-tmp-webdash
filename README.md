@@ -13,14 +13,55 @@ data/
 ├── v8-feature-matrices     <- raw tarball contents
 ├── v8-qc                   <- raw tarball contents
 |
-├── original_pred_matrices  <- group results
+├── original_pred_matrices  <- group results (previous group results raw, will be rm later)
 ├── tmpdir                  <- obj3 tsv
 ├── feature-sets            <- MAIN: unified feature set of all group results
 |   ├── ...
 |   └── ...
 └── predictions             <- MAIN: group results
-    ├── ...
-    └── ...
+|   ├── ...
+|   └── ...
+|   
+|
+├── GROUP_RESULTS_RAW_FINAL
+|   ├── AKLIMATE
+|       └── aklimate_predictions_and_features_20200430.tar.gz
+|   ├── CloudForest
+|       └──
+|   ├── GEXP_NN
+|       ├── Features-20200320_allCOHORTS_20200203Tarball_JasleenGrewal.txt
+|       └── 2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal.gz
+|   ├── Gnosis_results
+|       ├── 2020-04-08.zip
+|       └── 2020-04-08_extracted
+|           ├── ${tumor}_features_sets.tsv
+|           └── ${tumor}_single_sample_predictions.tsv
+|   └── OHSU_results
+|       ├── fbed_rfe_feats.csv       <- feature set
+|       └── reprocess.tgz            <- prediction files
+|           ├── fbed_ada
+|           ├── fbed_bnb
+|           ├── fbed_dt
+|           ├── fbed_et
+|           ├── fbed_gnb
+|           ├── fbed_gp
+|           ├── fbed_knn
+|           ├── fbed_logreg
+|           ├── fbed_pa
+|           ├── fbed_rf
+|           ├── fbed_sgd
+|           ├── fbed_svm
+|           ├── rfe_ada
+|           ├── rfe_bnb
+|           ├── rfe_dt
+|           ├── rfe_et
+|           ├── rfe_gnb
+|           ├── rfe_knn
+|           ├── rfe_logreg
+|           ├── rfe_pa
+|           ├── rfe_rf
+|           ├── rfe_sgd
+|           ├── rfe_svm
 ```
 
 ## Quick Start: Start the Shiny Application
@@ -84,3 +125,14 @@ bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices
 cd reformat
 bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
 ```
+
+# WIP
+
+Reformat Gnosis files - feature sets
+
+Working in `reformat/` and outputs `data/library_reformating`
+
+
++ Compare this with last run fixattempt2--all-features_sets_gnosis_corrected.tsv
+
++ Compare this with last run fixattempt2--reformat-${tumor}_single_sample_predictions.tsv
