@@ -132,3 +132,5 @@ outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
 cd reformat
 ./wrapper_preds-gnosis.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted TEMP_DIR ../data/library_reformating
 ```
+
+outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor}.tsv`
