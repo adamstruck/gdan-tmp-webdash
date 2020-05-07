@@ -137,5 +137,5 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
-- [] Reformat GEXP_NN feature set files
-- [] Reformat GEXP_NN prediction matrices
+- [ ] Reformat GEXP_NN feature set files
+- [ ] Reformat GEXP_NN prediction matrices
