@@ -110,28 +110,10 @@ If you want to be able to examine feature values in the app do the following:
   docker-compose up
   ```
 
-## Reformat Gnosis_results/2020-03-10_extracted/
-
-1. Fix feature set matrices format
-
-```
-cd reformat
-bash wrapper_ftset.sh ~/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted ~/Ellrott_Lab/gdan-tmp-webdash/reformat/temp_dir ~/Ellrott_Lab/gdan-tmp-webdash/data/feature-sets/fixattempt2--all-features_sets_gnosis_corrected.tsv
-```
-
-2. Fix prediction matrices format
-
-```
-cd reformat
-bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
-```
-
-# WIP - Reformat Gnosis_results/2020-04-08_extracted
-
-Reformat Gnosis files - feature sets
+# Reformat Gnosis files (20200408)
 
 - [x] Reformat Gnosis feature set files
-- [ ] Reformat Gnosis prediction matrices
+- [x] Reformat Gnosis prediction matrices
 
 1. Reformat feature set matrices
 
@@ -146,6 +128,7 @@ outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
 
  2. Reformat prediction matrices
 
- **WIP**
-
-+ Compare this with last run fixattempt2--reformat-${tumor}_single_sample_predictions.tsv
+```
+cd reformat
+./wrapper_preds.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted TEMP_DIR ../data/library_reformating
+```
