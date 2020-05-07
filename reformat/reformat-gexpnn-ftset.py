@@ -24,11 +24,14 @@ with open(ft_input, 'r') as fh, open(ft_output, 'w') as out:
         if line.startswith("#"):
             continue
         # Write col headers to out
-        if irow == 0:
+        elif irow == 0:
             line = line.split('\t')
             print(line[1])
             out.write(line[0]+'\t'+line[1]+'\t'+line[2]+"\n")
-            irow+=1
+            irow=1
+        #skip row 1 because this feature setid not present in prediction file
+        elif irow == 1:
+            irow=2
         else:
             line = line.strip().split('\t')
             ftmethod = line[0]
