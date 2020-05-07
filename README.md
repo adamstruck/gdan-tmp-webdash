@@ -126,13 +126,22 @@ cd reformat
 bash wrapper_preds.sh /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/original_pred_matrices/Gnosis_results/2020-03-10_extracted /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/reformat /Users/leejor/Ellrott_Lab/gdan-tmp-webdash/data/predictions/
 ```
 
-# WIP
+# WIP - Reformat Gnosis_results/2020-04-08_extracted
 
 Reformat Gnosis files - feature sets
 
-Working in `reformat/` and outputs `data/library_reformating`
+- [x] Reformat Gnosis feature set files
+
+1. Reformat feature set matrices
+
+Run:
+
+```
+cd reformat
+./wrapper_ftset.sh ../data/GROUP_RESULTS_RAW_FINAL/Gnosis_results/2020-04-08_extracted ./TEMP_DIR ../data/library_reformating/features_reformatted_gnosis20200408.tsv
+```
+outputs `data/library_reformating/features_reformatted_gnosis20200408.tsv`
 
 
-+ Compare this with last run fixattempt2--all-features_sets_gnosis_corrected.tsv
 
 + Compare this with last run fixattempt2--reformat-${tumor}_single_sample_predictions.tsv
