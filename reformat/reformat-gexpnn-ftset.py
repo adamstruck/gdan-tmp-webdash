@@ -39,7 +39,6 @@ with open(ft_input, 'r') as fh, open(ft_output, 'w') as out:
             ftset = line[2]
 
             # No reformat to ftmethod
-            ftmethod = 'model' + ftmethod
             out.write(ftmethod + '\t')
 
             # reformat tumor
