@@ -178,6 +178,10 @@ bash wrapper_preds-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/2020-03-20-
 
 # Reformat Aklimate files (aklimate_predictions_and_features_20200430)
 
+- [x] Reformat feature set file
+- [x] Reformat prediction matrices
+
+
 1. Reformat feature set files
 
 TODO:
@@ -193,8 +197,13 @@ bash wrapper_ftset-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate
 
 TODO:
 
-- [ ] rm # commented out lines, first 19 lines (specific to viewer input)
-- [ ] convert from prob to crisp predictions (ACC:ACC_2)
-- [ ] convert Label col entries ACC:2 --> ACC:ACC_2
-- [ ] update model col header: p --> c
-- [ ] update header add TUMOR:____ prefix, add time stamp where is 20200214 --> 2020-02-14T00:00.00.000 (will just pick time 00 for timestamp)
+- [x] rm # commented out lines, first 19 lines (specific to viewer input)
+- [x] convert from prob to crisp predictions (ACC:ACC_2)
+- [x] convert Label col entries ACC:2 --> ACC:ACC_2
+- [x] update model col header: p --> c
+- [x] update header add TUMOR:____ prefix, add time stamp where is 20200214 --> 2020-02-14T00:00.00.000 (will just pick time 00 for timestamp)
+
+```
+cd reformat
+bash wrapper_preds-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate_predictions_and_features_20200430 TEMP_DIR ../data/library_reformating
+```
