@@ -159,9 +159,19 @@ bash wrapper_ftset-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/Features-20
 
 2. Reformat GEXP_NN prediction files
 
+Decided to sep into individual tumor files (viewer requires this input), note that GEXP_NN is a pan-cancer method not a tumor level method
+
 Results column in file `nn_jg_2020-03-20|nn_jg_2020-03-20_top1kfreq|2020-03-20|p`
+
 TODO:
 - [x] convert from prob to crisp predictions (ACC:ACC_2)
 - [x] convert Label col entries ACC:2 --> ACC:ACC_2
 - [x] update model col header: p --> c
-- [ ] updat header add TUMOR:____ prefix, add time stamp where is 2020-03-20 --> 2020-03-20T00:00.00.000 (will just pick time 00 for timestamp)
+- [x] one unified file --> split files for each cancer type (just note this method applied a pan-cancer approach even though we are spliting by tumor)
+- [x] updat header add TUMOR:____ prefix, add time stamp where is 2020-03-20 --> 2020-03-20T00:00.00.000 (will just pick time 00 for timestamp)
+
+
+```
+cd reformat
+bash wrapper_preds-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal TEMP_DIR ../data/library_reformating
+```

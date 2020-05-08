@@ -13,12 +13,16 @@ python3 reformat-gexpnn-preds.py \
     -in ${raw_file} \
     -out ${temp_dir}/tmp-predictions_reformatted_gexpnn20200320allCOHORTS.tsv
 
+# Break full file into indivi tumor files
+echo 'splitting by tumor'
+python3 reformat-gexpnn-preds-STEP1B.py
 
-# # Reformat step 2: 2020-03-13 08:17:44.059 -> 2020-03-13T08:17:44.059, add "model" infront of model int
-# echo 'Starting reformat step 2'
-# python3 reformat-gexpnn-preds-STEP2.py \
-#     -in ${temp_dir} \
-#     -out ${output_dir}
-# 
-# echo 'Cleaning up workspace'
-# rm -r ${temp_dir}
+
+# Reformat step 2: 2020-03-13 08:17:44.059 -> 2020-03-13T08:17:44.059, add "model" infront of model int
+echo 'Starting reformat step 2'
+python3 reformat-gexpnn-preds-STEP2.py \
+    -in ${temp_dir} \
+    -out ${output_dir}
+
+echo 'Cleaning up workspace'
+rm -r ${temp_dir}
