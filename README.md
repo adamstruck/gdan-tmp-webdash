@@ -157,9 +157,10 @@ cd reformat
 bash wrapper_ftset-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/Features-20200320_allCOHORTS_20200203Tarball_JasleenGrewal.txt ../data/library_reformating/features_reformatted_gexpnn20200320allCOHORTS.tsv
 ```
 
-1. Reformat GEXP_NN prediction files
+2. Reformat GEXP_NN prediction files
 
 Results column in file `nn_jg_2020-03-20|nn_jg_2020-03-20_top1kfreq|2020-03-20|p`
 TODO:
 - [ ] convert from prob to crisp predictions (ACC:ACC_2)
+- [ ] convert Label col entries ACC:2 --> ACC:ACC_2
 - [ ] update model col header: p --> c, add TUMOR:____ prefix, add time stamp where is 2020-03-20 --> 2020-03-20T00:00.00.000 (will just pick time 00 for timestamp)
