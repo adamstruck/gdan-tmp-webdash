@@ -134,3 +134,44 @@ cd reformat
 ```
 
 outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor}.tsv`
+
+# Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
+
+- [x] Reformat GEXP_NN feature set file
+- [ ] Reformat GEXP_NN prediction matrices
+
+
+1. Reformat GEXP_NN feature set file
+
+Raw file contains 2 different feature sets (nn_jg_2020-03-20_bootstrapfeatures,nn_jg_2020-03-20_top1kfreq)
+
+TODO:
+- [x] Remove row on `nn_jg_2020-03-20_bootstrapfeatures` because this feature_set_id is not present in prediction file (viewer requires all featuresets in file to also be in prediction file)
+- [x] Remove # commented out lines at head of file (specific to viewer input)
+- [x] Remove Feature_importances col (specific to viewer input)
+- [x] col TCGA_Projects -- ' -> " and rm spaces between list items
+- [x] col Features -- "['ft', 'ft', ...]" -> ["ft","ft",..]
+
+```
+cd reformat
+bash wrapper_ftset-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/Features-20200320_allCOHORTS_20200203Tarball_JasleenGrewal.txt ../data/library_reformating/features_reformatted_gexpnn20200320allCOHORTS.tsv
+```
+
+2. Reformat GEXP_NN prediction files
+
+Decided to sep into individual tumor files (viewer requires this input), note that GEXP_NN is a pan-cancer method not a tumor level method
+
+Results column in file `nn_jg_2020-03-20|nn_jg_2020-03-20_top1kfreq|2020-03-20|p`
+
+TODO:
+- [x] convert from prob to crisp predictions (ACC:ACC_2)
+- [x] convert Label col entries ACC:2 --> ACC:ACC_2
+- [x] update model col header: p --> c
+- [x] one unified file --> split files for each cancer type (just note this method applied a pan-cancer approach even though we are spliting by tumor)
+- [x] updat header add TUMOR:____ prefix, add time stamp where is 2020-03-20 --> 2020-03-20T00:00.00.000 (will just pick time 00 for timestamp)
+
+
+```
+cd reformat
+bash wrapper_preds-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal TEMP_DIR ../data/library_reformating
+```
