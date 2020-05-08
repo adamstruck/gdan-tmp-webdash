@@ -161,4 +161,5 @@ bash wrapper_ftset-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/Features-20
 
 Results column in file `nn_jg_2020-03-20|nn_jg_2020-03-20_top1kfreq|2020-03-20|p`
 TODO:
-- [ ]
+- [ ] convert from prob to crisp predictions (ACC:ACC_2)
+- [ ] update model col header: p --> c, add TUMOR:____ prefix, add time stamp where is 2020-03-20 --> 2020-03-20T00:00.00.000 (will just pick time 00 for timestamp)
