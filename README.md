@@ -180,4 +180,9 @@ bash wrapper_preds-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/2020-03-20-
 
 1. Reformat feature set files
 
-- [ ] concat into one file
+- [x] concat into one file (purely for speed in taking time to read in one file vs 26)
+
+```
+cd reformat
+bash wrapper_ftset-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate_predictions_and_features_20200430 ../../library_reformating/features_reformatted_aklimate20200430.tsv
+```
