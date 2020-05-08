@@ -207,3 +207,19 @@ TODO:
 cd reformat
 bash wrapper_preds-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate_predictions_and_features_20200430 TEMP_DIR ../data/library_reformating
 ```
+
+# Reformat OHSU files (fbed_rfe_feats.csv and reprocess.tgz)
+
+- [ ] Reformat feature set file (fbed_rfe_feats.csv)
+- [ ] Reformat prediction matrices (reprocess.tgz)
+
+Note that there are two iterations in `reprocess.tgz`, we will only be using the most recent date files (20200331) thus will ignore (20200227)
+
+1. Reformat feature set files
+
+TODO:
+
+- [ ] convert csv --> tsv
+- [ ] rm 2 sets of double quotes in TCGA_Projects col. "[""ACC""]" --> ["ACC"]
+- [ ] rm 2 sets of double quotes in Features col. "[""B:MUTA:COMP:ERBB2::"", ""B:MUTA:COMP:FOXA1::"",..]" --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+- rm spaces between items in list under col Features ["B:MUTA:COMP:ERBB2::, "B:MUTA:COMP:FOXA1::",..] --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
