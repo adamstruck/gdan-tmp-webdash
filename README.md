@@ -138,7 +138,7 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
 - [x] Reformat GEXP_NN feature set file
-- [ ] Reformat GEXP_NN prediction matrices
+- [x] Reformat GEXP_NN prediction matrices
 
 
 1. Reformat GEXP_NN feature set file
@@ -175,3 +175,9 @@ TODO:
 cd reformat
 bash wrapper_preds-gexpnn.sh ../data/GROUP_RESULTS_RAW_FINAL/GEXP_NN/2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal TEMP_DIR ../data/library_reformating
 ```
+
+# Reformat Aklimate files (aklimate_predictions_and_features_20200430)
+
+1. Reformat feature set files
+
+- [ ] concat into one file
