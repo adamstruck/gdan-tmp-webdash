@@ -210,7 +210,7 @@ bash wrapper_preds-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate
 
 # Reformat OHSU files (fbed_rfe_feats.csv and reprocess.tgz)
 
-- [ ] Reformat feature set file (fbed_rfe_feats.csv)
+- [x] Reformat feature set file (fbed_rfe_feats.csv)
 - [ ] Reformat prediction matrices (reprocess.tgz)
 
 Note that there are two iterations in `reprocess.tgz`, we will only be using the most recent date files (20200331) thus will ignore (20200227)
@@ -219,7 +219,12 @@ Note that there are two iterations in `reprocess.tgz`, we will only be using the
 
 TODO:
 
-- [ ] convert csv --> tsv
-- [ ] rm 2 sets of double quotes in TCGA_Projects col. "[""ACC""]" --> ["ACC"]
-- [ ] rm 2 sets of double quotes in Features col. "[""B:MUTA:COMP:ERBB2::"", ""B:MUTA:COMP:FOXA1::"",..]" --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+- [x] convert csv --> tsv
+- [x] rm 2 sets of double quotes in TCGA_Projects col. "[""ACC""]" --> ["ACC"]
+- [x] rm 2 sets of double quotes in Features col. "[""B:MUTA:COMP:ERBB2::"", ""B:MUTA:COMP:FOXA1::"",..]" --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
 - rm spaces between items in list under col Features ["B:MUTA:COMP:ERBB2::, "B:MUTA:COMP:FOXA1::",..] --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+
+```
+cd reformat
+bash wrapper_ftset-ohsu.sh ../data/GROUP_RESULTS_RAW_FINAL/OHSU_results/fbed_rfe_feats.csv ../data/library_reformating/features_reformatted_ohsu20200331.tsv
+```
