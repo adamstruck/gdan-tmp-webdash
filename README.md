@@ -222,7 +222,7 @@ TODO:
 - [x] convert csv --> tsv
 - [x] rm 2 sets of double quotes in TCGA_Projects col. "[""ACC""]" --> ["ACC"]
 - [x] rm 2 sets of double quotes in Features col. "[""B:MUTA:COMP:ERBB2::"", ""B:MUTA:COMP:FOXA1::"",..]" --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
-- rm spaces between items in list under col Features ["B:MUTA:COMP:ERBB2::, "B:MUTA:COMP:FOXA1::",..] --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+- [x] rm spaces between items in list under col Features ["B:MUTA:COMP:ERBB2::, "B:MUTA:COMP:FOXA1::",..] --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
 
 ```
 cd reformat
