@@ -31,11 +31,16 @@ source("load_data.R")
 # obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv') %>%
 #     dplyr::as_tibble() %>%
 #     dplyr::mutate(Date = as.Date(Date))
+# message('...generating model summary\n\t', Sys.time())
+# message('...GNOSIS - reading /data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv\n\t', Sys.time())
+# obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv') %>%
+#     dplyr::as_tibble() %>%
+#     dplyr::mutate(Date = as.Date(Date))
 message('...generating model summary\n\t', Sys.time())
-message('...GNOSIS - reading /data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv\n\t', Sys.time())
-obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--fixattempt2--gnosis_obj3.tsv') %>%
+message('...readng in obj3 at /home/ubuntu/gdan-tmp-webdash/data/tmpdir/tmp--obj3-FINAL.tsv\n\t', Sys.time())
+obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--obj3-FINAL.tsv') %>%
     dplyr::as_tibble() %>%
-    dplyr::mutate(Date = as.Date(Date))
+    dplyr::mutate(Date = as.Date(Date), Features = as.character(Features))
 
 
 ##
