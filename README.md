@@ -211,9 +211,11 @@ bash wrapper_preds-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate
 # Reformat OHSU files (fbed_rfe_feats.csv and reprocess.tgz)
 
 - [x] Reformat feature set file (fbed_rfe_feats.csv)
-- [ ] Reformat prediction matrices (reprocess.tgz)
+- [ ] Reformat prediction matrices (sklrn_shiny_20200508) (old == reprocess.tgz)
 
-Note that there are two iterations in `reprocess.tgz`, we will only be using the most recent date files (20200331) thus will ignore (20200227)
+Using prediction files `sklrn_shiny_20200508` that are the same as the most recent date in reprocess BUT that have consolidated all models for ONE tumor into one file
+
+Old note == Note that there are two iterations in `reprocess.tgz`, we will only be using the most recent date files (20200331) thus will ignore (20200227)
 
 1. Reformat feature set files
 
@@ -228,3 +230,13 @@ TODO:
 cd reformat
 bash wrapper_ftset-ohsu.sh ../data/GROUP_RESULTS_RAW_FINAL/OHSU_results/fbed_rfe_feats.csv ../data/library_reformating/features_reformatted_ohsu20200331.tsv
 ```
+
+1. Reformat prediction files
+
+TODO:
+
+- [ ] convert csv --> tsv
+- [ ] rm index col
+- [ ] convert Label col. ACC:2 --> ACC:ACC_2
+- [ ] convert model prediction col. ACC:2 --> ACC:ACC_2
+- [ ] change model col header timestamp. 2020-02-27 --> 2020-02-27T00:00:00.000 (will just pick time 00 for timestamp)
