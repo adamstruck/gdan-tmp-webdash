@@ -12,11 +12,13 @@ import argparse
 def get_arguments():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("-in", "--input", help ="name of input file", required=True, type=str)
+    parser.add_argument("-cl", "--comments", help ="number of commented lines at start, will skip this", required=True, type=int)
     parser.add_argument("-out", "--output", help ="name of output file", required=True, type=str)
     return parser.parse_args()
 
 args = get_arguments()
 pred_file = args.input
+comments= args.comments
 output_name = args.output
 
 
@@ -50,7 +52,8 @@ def qc_prediction(PREDICTION_C):
 # Read in
 #####
 # Read in file
-raw_pred = pd.read_csv(pred_file, skiprows=4178, sep='\t')
+print(pred_file)
+raw_pred = pd.read_csv(pred_file, skiprows=comments, sep='\t')
 # raw_pred = pd.read_csv(pred_file, skiprows=4178, sep='\t', index_col=0)
 #raw_pred
 
@@ -111,3 +114,4 @@ for m in models:
 matrix_crisp=matrix_crisp.rename(columns = {'Unnamed: 0':'Sample_ID'})
 # save output
 matrix_crisp.to_csv(output_name, sep='\t', index=False)
+print('created ', output_name)
