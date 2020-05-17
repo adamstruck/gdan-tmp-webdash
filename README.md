@@ -137,6 +137,7 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
+- [x] Make sure to reformat all 26 tumors 
 - [x] Reformat GEXP_NN feature set file
 - [x] Reformat GEXP_NN prediction matrices
 
@@ -235,8 +236,6 @@ bash wrapper_ftset-ohsu.sh ../data/GROUP_RESULTS_RAW_FINAL/OHSU_results/fbed_rfe
 
 TODO:
 
-- [ ] convert csv --> tsv
-- [ ] rm index col
 - [ ] convert Label col. ACC:2 --> ACC:ACC_2
 - [ ] convert model prediction col. ACC:2 --> ACC:ACC_2
 - [ ] change model col header timestamp. 2020-02-27 --> 2020-02-27T00:00:00.000 (will just pick time 00 for timestamp)
