@@ -16,10 +16,52 @@ eggs/
 \#*\#
 .desktop
 
-/venv
+data/.DS_Store
+.DS_Store
 
-/data
+/venv
+/sandbox
 /outputs
 graph-etl/outputs
 
 manifest.txt
+
+data/feature-sets/*
+
+data/features.sqlite
+data/original_pred_matrices/*
+!data/original_pred_matrices/README.md
+
+data/predictions/*
+
+data/v8-cv-matrices/*
+!data/v8-cv-matrices/README.md
+data/v8-qc/*
+!data/v8-qc/README.md
+data/v8-feature-matrices/*
+!data/v8-feature-matrices/README.md
+
+/reformat/*.tsv
+/reformat/processed/*.tsv
+/reformat/final_reformatted_files/*.tsv
+
+/data/TEMP*
+# house temp files from adams random forest until app can be scaled up
+data/ADAM-feature-sets/*
+data/ADAM-predictions/*
+# house temp files from gnosis until app can be scaled up
+data/GNOSIS-feature-sets/*
+data/GNOSIS-predictions/*
+data/GNOSIS*
+
+
+# files to reduce memory load (1=gnosis, 2=adam rf)
+data/tmpdir/*
+!data/tmpdir/README.md
+
+# final raw data of group
+data/GROUP_RESULTS_RAW_FINAL/*
+!data/GROUP_RESULTS_RAW_FINAL/README.md
+
+# library of reformatted group input files
+data/library_reformating/
