@@ -60,7 +60,8 @@ data/tmpdir/*
 !data/tmpdir/README.md
 
 # final raw data of group
-data/GROUP_RESULTS_RAW_FINAL
+data/GROUP_RESULTS_RAW_FINAL/*
+!data/GROUP_RESULTS_RAW_FINAL/README.md
 
 # library of reformatted group input files
 data/library_reformating/
