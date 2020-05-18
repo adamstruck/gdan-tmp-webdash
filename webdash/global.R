@@ -42,7 +42,6 @@ obj3 <- data.table::fread('/mnt/data/tmpdir/tmp--obj3-FINAL.tsv') %>%
     dplyr::as_tibble() %>%
     dplyr::mutate(Date = as.Date(Date), Features = as.character(Features))
 
-
 ##
 ## message('...creating obj4\n\t', Sys.time())
 ## obj4 <- featureSets %>%
