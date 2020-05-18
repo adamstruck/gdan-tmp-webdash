@@ -1,10 +1,9 @@
 #!/usr/bin/env Rscript
 
-# ######## Hardcoded objects
-# prediction_dir = "<path>/data/predictions"
-# features_dir = "<path>/data/feature-sets"
-# output_obj3_name = '<path>/data/tmpdir/tmp--combo_rf-gnosis_obj3.tsv'
-# #########################
+
+# Purpose: create obj3 and store in tmp data/tmpdir
+#    This will be pulled in by webdash/global.R to speed up app start up
+#    otherwise slow at processing new files to create `model_summary` for large datasets
 
 suppressMessages({
   library(foreach)
@@ -12,22 +11,19 @@ suppressMessages({
   library(dplyr)
   library(data.table)
   library(tidyr)
-  library(argparse)
 })
-
-parser <- ArgumentParser()
-parser$add_argument("-p", "--prediction_dir", type='character', help="input dir of prediction files")
-parser$add_argument('-f', '--features_dir', type='character', help='input dir of feature set files')
-parser$add_argument('-out', '--output_obj3_name', type='character', help='output file name of obj3')
-args <- parser$parse_args()
+## options(shiny.trace = TRUE) #enable tracing
 
 
-## options(shiny.trace = TRUE) # JAL
-
+#############
+# Section 1: load_data.R
+#   Purpose == get object `predictions` that are needed for input of section 2
+#############
+# Input paths
 message("loading prediction files...")
-output_files <- list.files(args$prediction_dir, full.names = T)
-featureset_files <- list.files(args$features_dir, full.names = T)
-
+output_files <- list.files("/home/ubuntu/gdan-tmp-webdash/data/predictions", full.names = T)
+featureset_files <- list.files("/home/ubuntu/gdan-tmp-webdash/data/feature-sets", full.names = T)
+# Generate predictions object from prediction files
 predictions <- foreach(f = output_files, .combine = dplyr::bind_rows) %do% {
   #message('Currently working on file: ')
   #print(f)
@@ -54,6 +50,18 @@ predictions <- foreach(f = output_files, .combine = dplyr::bind_rows) %do% {
   tidyr::separate(model_id, "\\:", into = c("cancer_id", "model_id"))
 
 
+
+#############
+# Section 2. global.R
+#    Prediction output of load_data.R
+#############
+# sanity check
+message('sanity check:' )
+print(unique(predictions$cancer_id))
+
+# Begin with slow part of global.R, can take >2 hours with 2 large datasets
+# 1. Create obj1
+message('creating obj1' )
 obj1 <- predictions %>%
   dplyr::group_by(cancer_id, model_id, featureset_id, type) %>%
   dplyr::summarize(correct = table(as.numeric(predicted_value) == as.numeric(actual_value))["TRUE"],
@@ -62,24 +70,17 @@ obj1 <- predictions %>%
   dplyr::mutate(tpr = round(correct / total, digits = 3)) %>%
   dplyr::select(cancer_id, model_id, featureset_id, type, tpr) %>%
   tidyr::spread(type, tpr)
-
+# 2. Create obj2
+message('creating obj2' )
 obj2 <- predictions %>%
   dplyr::select(cancer_id, model_id, featureset_id, date, prediction_id) %>%
   dplyr::distinct()
-
+# 3. Create obj3
+message('creating obj3' )
 obj3 <- dplyr::left_join(obj1, obj2) %>%
     # rename cols
     dplyr::rename(Project = cancer_id, Model = model_id, Features = featureset_id,Date = date, TPR_Training = training, TPR_Testing = testing)
 
 
-write.table(obj3, file=args$output_obj3_name, sep='\t', col.names=TRUE, row.names=FALSE)
-
-#####
-# Manual check if file reads in and out correctly
-#####
-## new_copy_obj3 <- data.table::fread(args$output_obj3_name) %>%
-##     dplyr::as_tibble() %>%
-##     # by default read in not as type date. so force it here
-##     dplyr::mutate(Date = as.Date(Date))
-## # compare if these are the same. they should be if implemented correctly
-## isTRUE( all.equal(copy_obj3, new_copy_obj3) )
+# Write the already created obj3 to disc
+write.table(obj3, file='/home/ubuntu/gdan-tmp-webdash/data/tmpdir/tmp--obj3-FINAL.tsv', sep='\t', col.names=TRUE, row.names=FALSE)
