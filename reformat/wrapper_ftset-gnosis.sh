@@ -18,19 +18,30 @@ echo 'will concat these files:'
 ls -1  | grep .*gnosis_corrected.tsv
 
 { head -1 ACC_gnosis_corrected.tsv; \
-    sed '1d' ACC_gnosis_corrected.tsv; \
+    sed '1d' BLCA_gnosis_corrected.tsv; \
+    sed '1d' BRCA_gnosis_corrected.tsv; \
     sed '1d' CESC_gnosis_corrected.tsv; \
+    sed '1d' COADREAD_gnosis_corrected.tsv; \
     sed '1d' ESCC_gnosis_corrected.tsv; \
+    sed '1d' GEA_gnosis_corrected.tsv; \
+    sed '1d' HNSC_gnosis_corrected.tsv; \
     sed '1d' KIRCKICH_gnosis_corrected.tsv; \
     sed '1d' KIRP_gnosis_corrected.tsv; \
+    sed '1d' LGGGBM_gnosis_corrected.tsv; \
     sed '1d' LIHCCHOL_gnosis_corrected.tsv; \
+    sed '1d' LUAD_gnosis_corrected.tsv; \
+    sed '1d' LUSC_gnosis_corrected.tsv; \
     sed '1d' MESO_gnosis_corrected.tsv; \
+    sed '1d' OV_gnosis_corrected.tsv; \
     sed '1d' PAAD_gnosis_corrected.tsv; \
     sed '1d' PCPG_gnosis_corrected.tsv; \
     sed '1d' PRAD_gnosis_corrected.tsv; \
     sed '1d' SARC_gnosis_corrected.tsv; \
+    sed '1d' SKCM_gnosis_corrected.tsv; \
     sed '1d' TGCT_gnosis_corrected.tsv; \
+    sed '1d' THCA_gnosis_corrected.tsv; \
     sed '1d' THYM_gnosis_corrected.tsv; \
+    sed '1d' UCEC_gnosis_corrected.tsv; \
     sed '1d' UVM_gnosis_corrected.tsv; } \
     > ${output_file}
 

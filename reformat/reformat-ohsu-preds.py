@@ -12,13 +12,11 @@ import argparse
 def get_arguments():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("-in", "--input", help ="name of input file", required=True, type=str)
-    parser.add_argument("-cl", "--comments", help ="number of commented lines at start, will skip this", required=True, type=int)
     parser.add_argument("-out", "--output", help ="name of output file", required=True, type=str)
     return parser.parse_args()
 
 args = get_arguments()
 pred_file = args.input
-comments= args.comments
 output_name = args.output
 
 
@@ -53,7 +51,7 @@ def qc_prediction(PREDICTION_C):
 #####
 # Read in file
 print(pred_file)
-raw_pred = pd.read_csv(pred_file, skiprows=comments, sep='\t')
+raw_pred = pd.read_csv(pred_file, sep='\t')
 # raw_pred = pd.read_csv(pred_file, skiprows=4178, sep='\t', index_col=0)
 #raw_pred
 
@@ -91,21 +89,21 @@ for m in models:
     # get crisp label from probabilites in a given cell
     new_col = []
     for row in df[m]:
-        #print(row)
-        row = row.replace('~0', '0') #rm ~
-        contents_dict = json.loads(row)
-        for k,v in contents_dict.items():
-            if k=='classification':
-                #print(v)
-                subtype_crisp = max(v, key=v.get)
-                subtype_crisp = qc_prediction(subtype_crisp)
-                #print(subtype_crisp)
-                new_col.append(subtype_crisp)
-
+        row = qc_prediction(row)
+        # contents_dict = json.loads(row)
+        # for k,v in contents_dict.items():
+        #     if k=='classification':
+        #         #print(v)
+        #         subtype_crisp = max(v, key=v.get)
+        #         subtype_crisp = qc_prediction(subtype_crisp)
+        #         #print(subtype_crisp)
+        #         new_col.append(subtype_crisp)
+        new_col.append(row)
         row_ct+=1
     #add crisp to matrix_crisp
-    i = prob2crisp(m)
-    matrix_crisp[i] = new_col
+    # i = prob2crisp(m)
+    # matrix_crisp[i] = new_col
+    matrix_crisp[m] = new_col
 
     col_ct+=1
 

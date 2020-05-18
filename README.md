@@ -137,6 +137,7 @@ outputs `data/library_reformating/predictions_reformatted_gnosis20200408-${tumor
 
 # Reformat GEXP_NN files (2020-03-20-allCOHORTS_20200203Tarball_JasleenGrewal)
 
+- [x] Make sure to reformat all 26 tumors 
 - [x] Reformat GEXP_NN feature set file
 - [x] Reformat GEXP_NN prediction matrices
 
@@ -207,3 +208,34 @@ TODO:
 cd reformat
 bash wrapper_preds-aklimate.sh ../data/GROUP_RESULTS_RAW_FINAL/AKLIMATE/aklimate_predictions_and_features_20200430 TEMP_DIR ../data/library_reformating
 ```
+
+# Reformat OHSU files (fbed_rfe_feats.csv and reprocess.tgz)
+
+- [x] Reformat feature set file (fbed_rfe_feats.csv)
+- [ ] Reformat prediction matrices (sklrn_shiny_20200508) (old == reprocess.tgz)
+
+Using prediction files `sklrn_shiny_20200508` that are the same as the most recent date in reprocess BUT that have consolidated all models for ONE tumor into one file
+
+Old note == Note that there are two iterations in `reprocess.tgz`, we will only be using the most recent date files (20200331) thus will ignore (20200227)
+
+1. Reformat feature set files
+
+TODO:
+
+- [x] convert csv --> tsv
+- [x] rm 2 sets of double quotes in TCGA_Projects col. "[""ACC""]" --> ["ACC"]
+- [x] rm 2 sets of double quotes in Features col. "[""B:MUTA:COMP:ERBB2::"", ""B:MUTA:COMP:FOXA1::"",..]" --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+- [x] rm spaces between items in list under col Features ["B:MUTA:COMP:ERBB2::, "B:MUTA:COMP:FOXA1::",..] --> ["B:MUTA:COMP:ERBB2::,"B:MUTA:COMP:FOXA1::",..]
+
+```
+cd reformat
+bash wrapper_ftset-ohsu.sh ../data/GROUP_RESULTS_RAW_FINAL/OHSU_results/fbed_rfe_feats.csv ../data/library_reformating/features_reformatted_ohsu20200331.tsv
+```
+
+1. Reformat prediction files
+
+TODO:
+
+- [ ] convert Label col. ACC:2 --> ACC:ACC_2
+- [ ] convert model prediction col. ACC:2 --> ACC:ACC_2
+- [ ] change model col header timestamp. 2020-02-27 --> 2020-02-27T00:00:00.000 (will just pick time 00 for timestamp)
